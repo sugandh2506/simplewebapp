@@ -9,7 +9,7 @@ node {
    }
    
    stage('Unit Test') { 
-       withEnv(['PATH+EXTRA=/opt/apache-maven-3.6.3/bin']) {
+       withEnv(['C:/DevTools/apache-maven-3.8.4/bin']) {
       // Get some code from a GitHub repository
         sh 'mvn clean compile'
         sh 'mvn test'
@@ -22,7 +22,7 @@ node {
    }
    
    stage('Package & Deploy') {
-       withEnv(['PATH+EXTRA=/opt/apache-maven-3.6.3/bin']) {
+       withEnv(['C:/DevTools/apache-maven-3.8.4/bin']) {
             sh 'mvn package'
             sh 'curl --upload-file target/simplewebapp.war "http://root@127.0.0.1:80/manager/text/deploy?path=/byjenkins&update=true"'
        }
